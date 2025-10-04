@@ -17,99 +17,63 @@ def RockPaperScissors():
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"Its a draw! Your Draws are {draws} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+      
         elif enemyrps == "Rock" and yrp == "PAPER":
+            wins += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Won the Round!! Your Wins are {wins} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+       
         elif enemyrps == "Rock" and yrp == "SCISSORS":
+            loses += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Lost the Round! Your Loses are {loses} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+        
         elif enemyrps == "Paper" and yrp == "ROCK":
             loses += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Lost the Round! Your Loses are {loses} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+         
         elif enemyrps == "Paper" and yrp == "PAPER":
+            draws += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"Its a Draw! Your Draws are {draws} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+         
         elif enemyrps == "Paper" and yrp == "SCISSORS":
+            wins += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Won the Round! Your Loses are {wins} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+        
         elif enemyrps == "Scissors" and yrp == "ROCK":
+            wins += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Won the Round! Your Wins are {wins} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+           
         elif enemyrps == "Scissors" and yrp == "PAPER":
+            loses += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"You Lost the Round! Your Loses are {loses} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
+
         elif enemyrps == "Scissors" and yrp == "SCISSORS":
+            draws += 1
             print(f"Enemy Chose {enemyrps.upper()}!")
             print(f"You Chose {yrp}")
             print(f"Its a Draw! Your Draws are {draws} now!")
-            quit = input("Do You Wanna Quit the Game? Y/N: ")
-            quit.upper()
-            if quit == "Y":
-                break
-            elif quit == "N":
-                pass
-        stats = input("Do You Wanna See Your Stats? Y/N: ")
-        if stats.upper() == "Y":
+
+        stats = input("Do You Wanna See Your Stats? Y/N: ").upper()
+        if stats == "Y":
             print(f"Wins - {wins}!")
             print(f"Loses - {loses}!")
             print(f"Draws - {draws}!")
-        if stats.upper() == "N":
-            pass
+        quit = input("Do You Wanna Quit the Game? Y/N: ").upper()
+        if quit == "Y":
+            break
+
 RockPaperScissors()
     
