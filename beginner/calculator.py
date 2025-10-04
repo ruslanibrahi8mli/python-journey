@@ -1,3 +1,8 @@
+# Project: Calculator
+# Date: 04.10.2025
+# Description: My first calculator app
+
+
 def calculator():
     while True:
         try:
