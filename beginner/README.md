@@ -10,7 +10,8 @@ Here you’ll find simple scripts where I practiced:
 
 ## 📌 Projects
 
-- **calculator.py** → My first calculator app (handles +, -, *, /, %, **)    
+- **calculator.py** → My first calculator app (handles +, -, *, /, %, **)
+- **rps.py** → My Rock/Paper/Scissors game
 
 ---
 
