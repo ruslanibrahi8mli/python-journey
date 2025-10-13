@@ -1,0 +1,159 @@
+# --------------------------------------------------------
+# Clicker Game with Persistent Save - Level 2/Intermediate
+# Date: 13.10.2025
+#
+# Description:
+# This is a simple clicker/idle game built with Tkinter.
+# Players can click to gain numbers, upgrade their base number,
+# and multiply their numbers. The game automatically saves progress
+# to a JSON file every 5 seconds and also saves on exit.
+#
+# Features:
+# - Click to gain numbers
+# - Base upgrade (+1) increases numbers per click
+# - Multiplier upgrade (x2) doubles numbers per click
+# - Dynamic costs that increase as upgrades are bought
+# - Numbers formatted with abbreviations for readability (k, M, B, etc.)
+# - Persistent save/load using JSON
+# - Auto-save every 5 seconds
+# - Manual save on exit
+#
+# How to play:
+# 1. Run the script.
+# 2. Click the green "+X" button to earn numbers.
+# 3. Use "Base +1" and "Multi xN" buttons to upgrade.
+# 4. Close the window to save progress. The game auto-saves regularly.
+#
+# Requirements:
+# - Python 3.x
+# - Tkinter (comes built-in with Python)
+# --------------------------------------------------------
+
+import tkinter as tk
+import json
+from datetime import datetime
+
+root = tk.Tk()
+
+# --- Game state ---
+number = 0
+base_number = 1
+multi_number = 1
+base_cost = 10
+multi_cost = 500
+
+SAVE_FILE = "save.json"
+
+# --- Save/load functions ---
+def save_game():
+    state = {
+        "number": number,
+        "base_number": base_number,
+        "multi_number": multi_number,
+        "base_cost": base_cost,
+        "multi_cost": multi_cost
+    }
+    with open(SAVE_FILE, "w") as f:
+        json.dump(state, f)
+
+def load_game():
+    global number, base_number, multi_number, base_cost, multi_cost
+    try:
+        with open(SAVE_FILE, "r") as f:
+            state = json.load(f)
+            number = state.get("number", 0)
+            base_number = state.get("base_number", 1)
+            multi_number = state.get("multi_number", 1)
+            base_cost = state.get("base_cost", 10)
+            multi_cost = state.get("multi_cost", 500)
+    except FileNotFoundError:
+        pass  
+
+# --- Auto-save every 5 seconds ---
+def auto_save():
+    save_game()
+    print(f"Game Saved at {datetime.now()}!")
+    root.after(5000, auto_save)  
+
+# --- Save on exit ---
+def on_close():
+    save_game()
+    print(f"Game Saved at {datetime.now()}!")
+    root.destroy()
+
+root.protocol("WM_DELETE_WINDOW", on_close)
+
+# --- Load save at startup ---
+load_game()
+auto_save()
+
+
+# --- Functions ---
+def abr(n):
+    tiers = {
+    "De" : 10**33,
+    "No" : 10**30,
+    "Oc" : 10**27,
+    "Sp" : 10**24,
+    "Sx" : 10**21,
+    "Qn" : 10**18,
+    "Qd" : 10**15,
+    "T"  : 10**12,
+    "B"  : 10**9,
+    "M"  : 10**6,
+    "k"  : 10**3
+    }
+
+    
+    for suffix,value in tiers.items():
+        if n >= value:
+            return f"{n / value:.1f}{suffix}"
+    return str(n)
+
+def update_display():
+    numbers_label.config(text=f"Numbers: {abr(int(number))}")
+    add_button.config(text=f"+{abr(base_number * multi_number)}")
+    baseupg_button.config(text=f"Base +1 ({abr(base_cost)})")
+    multiupg_button.config(text=f"Multi x{abr(multi_number)} ({abr(multi_cost)})")
+
+def add():
+    global number
+    number += base_number * multi_number
+    update_display()
+
+def base_upgrade():
+    global number, base_number, base_cost
+    if number >= base_cost:
+        number -= base_cost
+        base_number += 1
+        base_cost = int(10 * (1.15 ** base_number) + base_number * 2)
+        update_display()
+
+def multi_upgrade():
+    global number, multi_number, multi_cost
+    if number >= multi_cost:
+        number -= multi_cost
+        multi_number *= 2  
+        multi_cost = int(500 * (1.25 ** multi_number) + multi_number * 5)
+        update_display()
+
+# --- Labels & Buttons ---
+numbers_label = tk.Label(root, text="Numbers: 0", font='rem 20 bold')
+numbers_label.pack(pady=10)
+
+add_button = tk.Button(root, text="+1", font='rem 15 bold', fg='black', bg='green', command=add, height=4, width=10)
+add_button.pack(padx=25, pady=25)
+
+baseupg_button = tk.Button(root, text=f"Base +1 ({base_cost})", font='rem 15 bold', fg='black', bg='green', command=base_upgrade, height=2, width=10)
+baseupg_button.pack(pady=10)
+
+multiupg_button = tk.Button(root, text=f"Multi x{multi_number} ({multi_cost})", font='rem 15 bold', fg='black', bg='green', command=multi_upgrade, height=2, width=10)
+multiupg_button.pack(pady=10)
+
+# --- Run ---
+
+update_display()
+root.mainloop()
+
+
+
