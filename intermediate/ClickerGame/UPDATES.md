@@ -1,5 +1,5 @@
-🆕 Clicker Game Updates
-v1.0 – 13.10.2025
+# **Clicker Game Updates**:
+# v1.0 – 13.10.2025
 
 Initial release
 
@@ -11,7 +11,7 @@ JSON save/load
 
 Auto-save + save on exit
 
-v1.1 – 13.10.2025
+# v1.1 – 13.10.2025
 
 Added custom button images with PIL / ImageTk
 
