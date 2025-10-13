@@ -1,4 +1,4 @@
-**Clicker Game – Level 2/Intermediate**
+# **Clicker Game – Level 2/Intermediate**
 
 **Date: 13.10.2025**
 
@@ -9,7 +9,7 @@ Players click to earn numbers, upgrade their base number, and multiply their num
 
 The game automatically saves progress to a JSON file and also saves on exit.
 
-**Features:**
+# **Features:**
 Click to gain numbers
 
 Base upgrade (+1) increases numbers per click
@@ -26,7 +26,7 @@ Auto-save every 5 seconds
 
 Manual save on exit
 
-**How to Play:**
+# **How to Play:**
 
 Run clicker.py.
 
@@ -36,7 +36,7 @@ Use "Base +1" and "Multi xN" buttons to upgrade.
 
 Close the window to save progress. The game auto-saves regularly.
 
-**Requirements:**
+# **Requirements:**
 
 Python 3.x
 
