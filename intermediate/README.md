@@ -10,7 +10,7 @@ These will focus on:
 ---
 
 ## 📌 Projects
-_No projects added yet. Stay tuned!_
+_Clicker Game v1.1 – A number-clicking incremental game with upgrades, save/load via JSON, and auto-save functionality. GUI built with Tkinter and custom button images._
 
 ---
 
